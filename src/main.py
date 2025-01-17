@@ -1,10 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from . import smoketest
-import debugpy
-
-debugpy.listen(("0.0.0.0", 5678))
-# debugpy.wait_for_client()
 
 app = FastAPI()
 
@@ -19,8 +15,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
 
 app.include_router(smoketest.router, prefix="/smoke-test")
 
